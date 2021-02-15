@@ -61,7 +61,6 @@ public class Ejercicio2 {
                         try {
                             Thread.sleep(1000);
                         } catch (Exception e) {
-                            // TODO Auto-generated catch block
                             System.out.println("");
                         }
                         System.out.println("Desea colgar? S/N");
@@ -85,9 +84,9 @@ public class Ejercicio2 {
         System.out.printf("%n%n");
         System.out.println("Elija una opción:");
         System.out.println("1 Alta de un telefono");
-        System.out.println("2 Opción 2");
-        System.out.println("3 Opción 3");
-        System.out.println("4 Opción 4");
+        System.out.println("2 Consultar saldo");
+        System.out.println("3 Recargar saldo");
+        System.out.println("4 Hacer una llamada");
         System.out.println("0 Salir del programa");
         try { // si introduce un valor no entero haría return 999
             return Integer.parseInt(teclado.nextLine());
