@@ -2,7 +2,7 @@ package recursos;
 
 import java.util.Scanner;
 
-public class _modeloMenu {
+public class modeloMenu {
     
     static Scanner teclado;
     
