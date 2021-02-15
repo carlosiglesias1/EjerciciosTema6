@@ -2,12 +2,13 @@ package recursos;
 import java.util.Scanner;
 public class Consola {  
       
-public Consola (){
+protected Consola (){
     //Empty constructor
 }
 
 public static int leerEntero (String texto) {
-    int valor=-1;  boolean error;
+    int valor=-1;  
+    boolean error;
     do  {   
         error = false;
         Scanner teclado = new Scanner(System.in);
@@ -17,12 +18,14 @@ public static int leerEntero (String texto) {
         try {
           valor = Integer.parseInt(txt);
         }  catch( Exception e ) {System.out.println("> Valor incorrecto."); error=true;}
+        teclado.close();
     }  while (error);
     return valor;
 }
 
-public static void PintarTablero (Nim tablero){
-    int i,j;
+public static void pintarTablero (Nim tablero){
+    int i;
+    int j;
     
     System.out.println ("\n-------TABLERO-----------" );
     for (i=0;i<=2;i++) {
