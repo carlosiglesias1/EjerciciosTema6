@@ -71,6 +71,7 @@ public class Ejercicio2 {
                     break;
                 case 5:
                     
+                    break;
                 case 0:
                     salir = true;
                     break;
@@ -87,8 +88,10 @@ public class Ejercicio2 {
         System.out.println("2 Consultar saldo");
         System.out.println("3 Recargar saldo");
         System.out.println("4 Hacer una llamada");
+        System.out.println("5 Navegar por internet");
         System.out.println("0 Salir del programa");
-        try { // si introduce un valor no entero haría return 999
+        try { 
+            // si introduce un valor no entero haría return 999
             return Integer.parseInt(teclado.nextLine());
         } catch (Exception e) {
             return 999;
