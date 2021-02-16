@@ -52,54 +52,65 @@ public class Ejercicio2 {
     }
 
     static void navegando() {
-        System.out.println("\tPuedes hacer otras cosas, pero gastarás tu saldo, gastarás 1 mb por interacción");
+        System.out.println("\tPuedes hacer otras cosas, pero gastarás tu saldo a razón de 1 mb por interacción");
         System.out.println("\tPara dejar de navegar, pulsa 'Salir' en el menú");
-        boolean b = menu() != 0;
-        while (b && consultarSaldo(telefono)>0) {
+        int opcion;
+        boolean salir = false;
+        do {
+            opcion = pintarMenu();
+            if (opcion == 0)
+                salir = true;
+            menu(opcion);
             telefono.navegar(1);
-        }
+        } while (!salir && consultarSaldo(telefono) > 0);
         System.out.println("\tHas dejado de navegar");
     }
 
-    static int menu() {
+    private static int ejecutarMenu() {
         teclado = new Scanner(System.in);
-        boolean salir = false;
         int opcion;
+        boolean salir = false;
         do {
             opcion = pintarMenu();
-            switch (opcion) {
-                case 1:
-                    System.out.println("\tVas a dar de alta un teléfono");
-                    System.out.print("\tIntroduce un número de teléfono:");
-                    int numero = Integer.parseInt(teclado.nextLine());
-                    telefono = crearTelefono((long) numero);
-                    break;
-                case 2:
-                    System.out.println("\tTu saldo es de: " + consultarSaldo(telefono));
-                    break;
-                case 3:
-                    System.out.println("\tVa a realizar una recarga de saldo.");
-                    System.out.print("\tIntroduzca el importe de la recarga: ");
-                    importe = Integer.parseInt(teclado.nextLine());
-                    recargaSaldo(telefono, importe);
-                    System.out.println("\tTu nuevo saldo es de: " + consultarSaldo(telefono));
-                    break;
-                case 4:
-                    System.out.println("\tEstas haciendo una llamada, tu saldo se agota!!");
-                    llamadoDeEmergrensia();
-                    break;
-                case 5:
-                    System.out.println("\tEstas navegando por internet");
-                    navegando();
-                    break;
-                case 0:
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("\nOpción incorrecta");
-            }
+            if (opcion == 0)
+                salir = true;
+            menu(opcion);
         } while (!salir);
-        return 0;
+        return 1;
+    }
+
+    static void menu(int opcionMenu) {
+        int opcion = opcionMenu;
+        switch (opcion) {
+            case 1:
+                System.out.println("\tVas a dar de alta un teléfono");
+                System.out.print("\tIntroduce un número de teléfono:");
+                int numero = Integer.parseInt(teclado.nextLine());
+                telefono = crearTelefono((long) numero);
+                break;
+            case 2:
+                System.out.println("\tTu saldo es de: " + consultarSaldo(telefono));
+                break;
+            case 3:
+                System.out.println("\tVa a realizar una recarga de saldo.");
+                System.out.print("\tIntroduzca el importe de la recarga: ");
+                importe = Integer.parseInt(teclado.nextLine());
+                recargaSaldo(telefono, importe);
+                System.out.println("\tTu nuevo saldo es de: " + consultarSaldo(telefono));
+                break;
+            case 4:
+                System.out.println("\tEstas haciendo una llamada, tu saldo se agota!!");
+                llamadoDeEmergrensia();
+                break;
+            case 5:
+                System.out.println("\tEstas navegando por internet");
+                navegando();
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("\nOpción incorrecta");
+        }
     }
 
     private static int pintarMenu() {
@@ -120,20 +131,7 @@ public class Ejercicio2 {
     }
 
     public static void main(String[] args) {
-        menu();
+        ejecutarMenu();
         teclado.close();
     }
 }
-/*  
-    ╭ ━━━━-╮
-    ╰┃ ┣▇━▇
-     ┃ ┃  ╰━▅╮ 
-     ╰┳╯ ╰━━┳╯F A C I L I T O
-      ╰╮ ┳━━╯ E L T U T O R I A L
-     ▕▔▋ ╰╮╭━╮
-    ╱▔╲▋╰━┻┻╮╲╱▔▔▔╲
-    ▏  ▔▔▔▔▔▔▔  O O┃ 
-    ╲╱▔╲▂▂▂▂╱▔╲▂▂▂╱
-     ▏╳▕▇▇▕ ▏╳▕▇▇▕
-     ╲▂╱╲▂╱ ╲▂╱╲▂╱
-*/
