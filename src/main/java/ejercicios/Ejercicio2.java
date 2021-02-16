@@ -18,6 +18,9 @@ public class Ejercicio2 {
     static int importe = 0;
 
     static MovilPrepago crearTelefono(long numero) {
+        //Para non meterse en líos, os costes van a ir preestablecidos
+        //Só se operará sobre un teléfono en cada execución, dado que non hai unha estructura que garde os distintos telefonos
+        //Co cal ao dar de alta un novo telefono, o seguinte quedaría colgado
         return new MovilPrepago(numero, (float) 0.02, (float) 0.50, (float) 0.20, (float) 0);
     }
 
@@ -35,6 +38,7 @@ public class Ejercicio2 {
         while (consultarSaldo(telefono) > 0 && !colgar) {
             telefono.efectuarLlamada(60);
             try {
+                //Conversación interesante
                 System.out.println("\tBlablabla");
                 Thread.sleep(300);
                 System.out.println("\t¿Blablablabla?");
