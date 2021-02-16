@@ -70,19 +70,6 @@ public class Ejercicio2 {
         System.out.println("\tHas dejado de navegar");
     }
 
-    private static int ejecutarMenu() {
-        teclado = new Scanner(System.in);
-        int opcion;
-        boolean salir = false;
-        do {
-            opcion = pintarMenu();
-            if (opcion == 0)
-                salir = true;
-            menu(opcion);
-        } while (!salir);
-        return 1;
-    }
-
     static void menu(int opcionMenu) {
         int opcion = opcionMenu;
         switch (opcion) {
@@ -115,6 +102,19 @@ public class Ejercicio2 {
             default:
                 System.out.println("\nOpción incorrecta");
         }
+    }
+
+    private static int ejecutarMenu() {
+        teclado = new Scanner(System.in);
+        int opcion;
+        boolean salir = false;
+        do {
+            opcion = pintarMenu();
+            if (opcion == 0)
+                salir = true;
+            menu(opcion);
+        } while (!salir);
+        return 1;
     }
 
     private static int pintarMenu() {
