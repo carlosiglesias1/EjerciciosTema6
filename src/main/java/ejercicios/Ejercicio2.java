@@ -18,9 +18,10 @@ public class Ejercicio2 {
     static int importe = 0;
 
     static MovilPrepago crearTelefono(long numero) {
-        //Para non meterse en líos, os costes van a ir preestablecidos
-        //Só se operará sobre un teléfono en cada execución, dado que non hai unha estructura que garde os distintos telefonos
-        //Co cal ao dar de alta un novo telefono, o seguinte quedaría colgado
+        // Para non meterse en líos, os costes van a ir preestablecidos
+        // Só se operará sobre un teléfono en cada execución, dado que non hai unha
+        // estructura que garde os distintos telefonos
+        // Co cal ao dar de alta un novo telefono, o seguinte quedaría colgado
         return new MovilPrepago(numero, (float) 0.02, (float) 0.50, (float) 0.20, (float) 0);
     }
 
@@ -38,7 +39,7 @@ public class Ejercicio2 {
         while (consultarSaldo(telefono) > 0 && !colgar) {
             telefono.efectuarLlamada(60);
             try {
-                //Conversación interesante
+                // Conversación interesante
                 System.out.println("\tBlablabla");
                 Thread.sleep(300);
                 System.out.println("\t¿Blablablabla?");
@@ -74,10 +75,14 @@ public class Ejercicio2 {
         int opcion = opcionMenu;
         switch (opcion) {
             case 1:
-                System.out.println("\tVas a dar de alta un teléfono");
-                System.out.print("\tIntroduce un número de teléfono:");
-                int numero = Integer.parseInt(teclado.nextLine());
-                telefono = crearTelefono((long) numero);
+                if (telefono==null){
+                    System.out.println("\tVas a dar de alta un teléfono");
+                    System.out.print("\tIntroduce un número de teléfono:");
+                    int numero = Integer.parseInt(teclado.nextLine());
+                    telefono = crearTelefono((long) numero);
+                }
+                else
+                    System.out.println("Ya has creado un teléfono");
                 break;
             case 2:
                 System.out.println("\tTu saldo es de: " + consultarSaldo(telefono));
