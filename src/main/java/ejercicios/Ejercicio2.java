@@ -18,7 +18,7 @@ public class Ejercicio2 {
     static int importe = 0;
 
     static MovilPrepago crearTelefono(long numero) {
-        return new MovilPrepago(numero, (float) 0.02, (float) 0.02, (float) 0.30, (float) 0);
+        return new MovilPrepago(numero, (float) 0.02, (float) 0.50, (float) 0.20, (float) 0);
     }
 
     static float consultarSaldo(MovilPrepago telefono) {
@@ -29,7 +29,39 @@ public class Ejercicio2 {
         telefono.recargar(importe);
     }
 
-    static void menu() {
+    static void llamadoDeEmergrensia() {
+        boolean colgar = false;
+        String sino = "";
+        while (consultarSaldo(telefono) > 0 && !colgar) {
+            telefono.efectuarLlamada(60);
+            try {
+                System.out.println("\tBlablabla");
+                Thread.sleep(300);
+                System.out.println("\t¿Blablablabla?");
+                Thread.sleep(200);
+                System.out.println("\tBlablabla");
+                Thread.sleep(300);
+            } catch (Exception e) {
+                System.out.println("No hay buena covertura");
+            }
+            System.out.println("\tDesea colgar? S/N");
+            sino = teclado.nextLine();
+            if (sino.equalsIgnoreCase("S") || sino.equalsIgnoreCase("Si"))
+                colgar = true;
+        }
+    }
+
+    static void navegando() {
+        System.out.println("\tPuedes hacer otras cosas, pero gastarás tu saldo, gastarás 1 mb por interacción");
+        System.out.println("\tPara dejar de navegar, pulsa 'Salir' en el menú");
+        boolean b = menu() != 0;
+        while (b && consultarSaldo(telefono)>0) {
+            telefono.navegar(1);
+        }
+        System.out.println("\tHas dejado de navegar");
+    }
+
+    static int menu() {
         teclado = new Scanner(System.in);
         boolean salir = false;
         int opcion;
@@ -38,12 +70,12 @@ public class Ejercicio2 {
             switch (opcion) {
                 case 1:
                     System.out.println("\tVas a dar de alta un teléfono");
-                    System.out.print("Introduce un número de teléfono:");
+                    System.out.print("\tIntroduce un número de teléfono:");
                     int numero = Integer.parseInt(teclado.nextLine());
                     telefono = crearTelefono((long) numero);
                     break;
                 case 2:
-                    System.out.println("Tu saldo es de: " + consultarSaldo(telefono));
+                    System.out.println("\tTu saldo es de: " + consultarSaldo(telefono));
                     break;
                 case 3:
                     System.out.println("\tVa a realizar una recarga de saldo.");
@@ -53,32 +85,21 @@ public class Ejercicio2 {
                     System.out.println("\tTu nuevo saldo es de: " + consultarSaldo(telefono));
                     break;
                 case 4:
-                    boolean colgar = false;
-                    String sino = "";
                     System.out.println("\tEstas haciendo una llamada, tu saldo se agota!!");
-                    while (consultarSaldo(telefono) > 0 && !colgar) {
-                        telefono.efectuarLlamada(60);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) {
-                            System.out.println("");
-                        }
-                        System.out.println("Desea colgar? S/N");
-                        sino = teclado.nextLine();
-                        if(sino.equalsIgnoreCase("S"))
-                            colgar = true;
-                    }
+                    llamadoDeEmergrensia();
                     break;
                 case 5:
-                    
+                    System.out.println("\tEstas navegando por internet");
+                    navegando();
                     break;
                 case 0:
                     salir = true;
                     break;
                 default:
-                    System.out.println("Opción incorrecta");
+                    System.out.println("\nOpción incorrecta");
             }
         } while (!salir);
+        return 0;
     }
 
     private static int pintarMenu() {
@@ -90,7 +111,7 @@ public class Ejercicio2 {
         System.out.println("4 Hacer una llamada");
         System.out.println("5 Navegar por internet");
         System.out.println("0 Salir del programa");
-        try { 
+        try {
             // si introduce un valor no entero haría return 999
             return Integer.parseInt(teclado.nextLine());
         } catch (Exception e) {
@@ -99,8 +120,20 @@ public class Ejercicio2 {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         menu();
         teclado.close();
     }
 }
+/*  
+    ╭ ━━━━-╮
+    ╰┃ ┣▇━▇
+     ┃ ┃  ╰━▅╮ 
+     ╰┳╯ ╰━━┳╯F A C I L I T O
+      ╰╮ ┳━━╯ E L T U T O R I A L
+     ▕▔▋ ╰╮╭━╮
+    ╱▔╲▋╰━┻┻╮╲╱▔▔▔╲
+    ▏  ▔▔▔▔▔▔▔  O O┃ 
+    ╲╱▔╲▂▂▂▂╱▔╲▂▂▂╱
+     ▏╳▕▇▇▕ ▏╳▕▇▇▕
+     ╲▂╱╲▂╱ ╲▂╱╲▂╱
+*/
