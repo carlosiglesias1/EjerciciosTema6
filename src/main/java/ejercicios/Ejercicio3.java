@@ -14,7 +14,9 @@ import recursos.CuentaCorriente;
 public class Ejercicio3 {
     static CuentaCorriente cuenta;
     static Scanner teclado;
-
+    static void altaCuenta (){
+        System.out.println("Has dado de alta una cuenta");
+    }
     static void menu (){
         teclado = new Scanner(System.in);
         boolean salir = false;
