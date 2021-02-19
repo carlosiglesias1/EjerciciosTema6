@@ -30,13 +30,13 @@ public class Ejercicio3 {
         float[] bancoComision = { 0f, 0f };
         String banco = selectBanco();
         if (banco.equalsIgnoreCase("ABANCA")) {
-            bancoComision[0] = 0.045f;
+            bancoComision[0] = 1.045f;
             bancoComision[1] = 15f;
         } else if (banco.equalsIgnoreCase("Santander")) {
-            bancoComision[0] = 0.0432f;
+            bancoComision[0] = 1.0432f;
             bancoComision[1] = 20f;
         } else if (banco.equalsIgnoreCase("BBVA")) {
-            bancoComision[0] = 0.455f;
+            bancoComision[0] = 1.0455f;
             bancoComision[1] = 8.75f;
         }
         return bancoComision;
@@ -65,6 +65,16 @@ public class Ejercicio3 {
         System.out.println("\tEl nuevo saldo de tu cuenta es "+cuenta.getSaldo());
     }
 
+    static void retirada () {
+        float cantidad;
+        System.out.println("\tIntroduzca la cantidad");
+        cantidad = Float.parseFloat(teclado.nextLine());
+        if (cuenta.retirar(cantidad))
+            System.out.printf("\tHas retirado %.2f, tu nuevo saldo es de %.2f%n", cantidad, cuenta.getSaldo());
+        else
+            System.out.println("\tNo puedes quedarte en rojos!!");
+    }
+
     static void menu() {
         teclado = new Scanner(System.in);
         boolean salir = false;
@@ -81,10 +91,11 @@ public class Ejercicio3 {
                     ingreso();
                     break;
                 case 3:
-                    System.out.println("\tElegiste opción 3");
+                    System.out.println("\tTu saldo actual es de "+cuenta.getSaldo());
                     break;
                 case 4:
                     System.out.println("\tElegiste opción 4");
+                    retirada();
                     break;
                 case 0:
                     salir = true;
