@@ -57,6 +57,14 @@ public class Ejercicio3 {
         System.out.println("\tHas dado de alta una cuenta con una comision minima de " + CuentaCorriente.getMinimoCosmision());
     }
 
+    static void ingreso (){
+        float cantidad;
+        System.out.println("\tIntroduzca la cantidad");
+        cantidad = Float.parseFloat(teclado.nextLine());
+        cuenta.ingresar(cantidad);
+        System.out.println("\tEl nuevo saldo de tu cuenta es "+cuenta.getSaldo());
+    }
+
     static void menu() {
         teclado = new Scanner(System.in);
         boolean salir = false;
@@ -69,7 +77,8 @@ public class Ejercicio3 {
                     altaCuenta();
                     break;
                 case 2:
-                    System.out.println("\tElegiste opción 2");
+                    System.out.println("\tIngresar");
+                    ingreso();
                     break;
                 case 3:
                     System.out.println("\tElegiste opción 3");
