@@ -109,10 +109,10 @@ public class Ejercicio3 {
     private static int pintarMenu() {
         System.out.println("\n");
         System.out.println("Elija una opción:");
-        System.out.println("1 Opción 1");
-        System.out.println("2 Opción 2");
-        System.out.println("3 Opción 3");
-        System.out.println("4 Opción 4");
+        System.out.println("1 Alta de cuenta");
+        System.out.println("2 Ingresar");
+        System.out.println("3 Consultar saldo");
+        System.out.println("4 Retirar");
         System.out.println("0 Salir del programa");
         try { // si introduce un valor no entero haría return 999
             return Integer.parseInt(teclado.nextLine());
