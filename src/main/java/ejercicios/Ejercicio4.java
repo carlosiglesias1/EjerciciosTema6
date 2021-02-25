@@ -1,8 +1,8 @@
 package ejercicios;
 
-import ejercicios.Ejercicio3;
+import java.util.Scanner;
+import recursos.CuentaCorriente;
 
-public class Ejercicio4 {
 /**
  * 6.4. Haz un programa como el anterior, pero creando dos cuentas en vez de
  * una. Habrá una opción de menú nueva que será “Cambiar cuenta activa” para
@@ -14,8 +14,71 @@ public class Ejercicio4 {
  * una tercera variable ‘cuentaActiva’ sin constructor y hacer
  * ‘cuentaActiva=cuenta1’ o bien ‘cuentaActiva=cuenta2’ cuando nos interese.
  */
+
 public class Ejercicio4 {
-    static menu (){
-        Ejercicio3.menu();
+    static CuentaCorriente [] cuenta = new CuentaCorriente [3];
+    static CuentaCorriente cuentaActiva; 
+    static Scanner teclado;
+    
+    public Ejercicio4 (){
+        //Empty constructor
+    }
+    static void setCuentaActiva (){
+        int posicion;
+        System.out.println("¿Que cuenta quieres activar?");
+        posicion = Integer.parseInt(teclado.nextLine());
+        if (posicion > 3)
+            cuentaActiva = null;
+        else
+            cuentaActiva = cuenta [posicion];
+    }
+    static void menu() {
+        teclado = new Scanner(System.in);
+        boolean salir = false;
+        int opcion;
+        do {
+            opcion = pintarMenu();
+            switch (opcion) {
+                case 1:
+                    System.out.println("\tDar cuenta de alta");
+                    Ejercicio3.altaCuenta();
+                    break;
+                case 2:
+                    System.out.println("\tIngresar");
+                    Ejercicio3.ingreso();
+                    break;
+                case 3:
+                    System.out.println("\tTu saldo actual es de " + cuentaActiva.getSaldo());
+                    break;
+                case 4:
+                    System.out.println("\tElegiste opción 4");
+                    Ejercicio3.retirada();
+                    break;
+                case 5:
+                    System.out.println("\tCambiar de cuenta");
+                    setCuentaActiva();
+                break;
+                    case 0:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción incorrecta");
+            }
+        } while (!salir);
+    }
+
+    private static int pintarMenu() {
+        System.out.println("\n");
+        System.out.println("Elija una opción:");
+        System.out.println("1 Alta de cuenta");
+        System.out.println("2 Ingresar");
+        System.out.println("3 Consultar saldo");
+        System.out.println("4 Retirar");
+        System.out.println("0 Salir del programa");
+        try { // si introduce un valor no entero haría return 999
+            return Integer.parseInt(teclado.nextLine());
+        } catch (Exception e) {
+            return 999;
+        }
     }
 }
