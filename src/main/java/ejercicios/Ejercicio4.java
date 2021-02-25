@@ -1,9 +1,8 @@
 package ejercicios;
 
-<<<<<<< HEAD
+import ejercicios.Ejercicio3;
+
 public class Ejercicio4 {
-    
-=======
 /**
  * 6.4. Haz un programa como el anterior, pero creando dos cuentas en vez de
  * una. Habrá una opción de menú nueva que será “Cambiar cuenta activa” para
@@ -16,6 +15,7 @@ public class Ejercicio4 {
  * ‘cuentaActiva=cuenta1’ o bien ‘cuentaActiva=cuenta2’ cuando nos interese.
  */
 public class Ejercicio4 {
-
->>>>>>> 90536e1fe3695a357e564eaaa8453b15b7aeb6b2
+    static menu (){
+        Ejercicio3.menu();
+    }
 }

@@ -31,10 +31,10 @@ public class Ejercicio3 {
         String banco = selectBanco();
         if (banco.equalsIgnoreCase("ABANCA")) {
             bancoComision[0] = 1.045f;
-            bancoComision[1] = 15f;
+            bancoComision[1] = 5f;
         } else if (banco.equalsIgnoreCase("Santander")) {
             bancoComision[0] = 1.0432f;
-            bancoComision[1] = 20f;
+            bancoComision[1] = 7f;
         } else if (banco.equalsIgnoreCase("BBVA")) {
             bancoComision[0] = 1.0455f;
             bancoComision[1] = 8.75f;
@@ -53,8 +53,8 @@ public class Ejercicio3 {
         float[] comisiones = selectComision();
         System.out.println("\tIntroduce un número de cuenta: ");
         cuenta = new CuentaCorriente(teclado.nextLine());
-        CuentaCorriente.setComision(comisiones[0], comisiones[1]);
-        System.out.println("\tHas dado de alta una cuenta con una comision minima de " + CuentaCorriente.getMinimoCosmision());
+        cuenta.setComision(comisiones[0], comisiones[1]);
+        System.out.println("\tHas dado de alta una cuenta con una comision minima de " + cuenta.getMinimoCosmision());
     }
 
     static void ingreso (){
