@@ -1,6 +1,7 @@
 package ejercicios;
 
 import java.util.Scanner;
+import recursos.CuentaCorriente;
 
 /**
  * 6.3. A partir de la clase CuentaCorriente que te proporcionará el profesor,
@@ -9,11 +10,11 @@ import java.util.Scanner;
  * operaciones como ingresar, retirar y consultar saldo en la cuenta. 
  * El único atributo público de la cuenta es el IBAN (String de 24 dígitos/letras).
  */
-import recursos.CuentaCorriente;
+
 
 public class Ejercicio3 {
     static CuentaCorriente cuenta;
-    static Scanner teclado;
+    static Scanner teclado = new Scanner (System.in);
 
     static String selectBanco() {
         String banco = "";
@@ -25,7 +26,7 @@ public class Ejercicio3 {
         return banco;
     }
 
-    static float[] selectComision() {
+    static float [] selectComision() {
         // bancoComision [0] = pc -> bancoComision [1] = mc
         float[] bancoComision = { 0f, 0f };
         String banco = selectBanco();
@@ -53,19 +54,20 @@ public class Ejercicio3 {
         float[] comisiones = selectComision();
         System.out.println("\tIntroduce un número de cuenta: ");
         cuenta = new CuentaCorriente(teclado.nextLine());
-        cuenta.setComision(comisiones[0], comisiones[1]);
-        System.out.println("\tHas dado de alta una cuenta con una comision minima de " + cuenta.getMinimoCosmision());
+        CuentaCorriente.setComision(comisiones[0], comisiones[1]);
+        System.out.println(
+                "\tHas dado de alta una cuenta con una comision minima de " + CuentaCorriente.getMinimoCosmision());
     }
 
-    static void ingreso (){
+    static void ingreso() {
         float cantidad;
         System.out.println("\tIntroduzca la cantidad");
         cantidad = Float.parseFloat(teclado.nextLine());
         cuenta.ingresar(cantidad);
-        System.out.println("\tEl nuevo saldo de tu cuenta es "+cuenta.getSaldo());
+        System.out.println("\tEl nuevo saldo de tu cuenta es " + cuenta.getSaldo());
     }
 
-    static void retirada () {
+    static void retirada() {
         float cantidad;
         System.out.println("\tIntroduzca la cantidad");
         cantidad = Float.parseFloat(teclado.nextLine());
@@ -91,7 +93,7 @@ public class Ejercicio3 {
                     ingreso();
                     break;
                 case 3:
-                    System.out.println("\tTu saldo actual es de "+cuenta.getSaldo());
+                    System.out.println("\tTu saldo actual es de " + cuenta.getSaldo());
                     break;
                 case 4:
                     System.out.println("\tElegiste opción 4");

@@ -16,22 +16,38 @@ import recursos.CuentaCorriente;
  */
 
 public class Ejercicio4 {
-    static CuentaCorriente [] cuenta = new CuentaCorriente [3];
-    static CuentaCorriente cuentaActiva; 
+    static CuentaCorriente[] cuenta = new CuentaCorriente[3];
+    static CuentaCorriente cuentaActiva;
     static Scanner teclado;
-    
-    public Ejercicio4 (){
-        //Empty constructor
-    }
-    static void setCuentaActiva (){
+
+    static void setCuentaActiva() {
         int posicion;
         System.out.println("¿Que cuenta quieres activar?");
         posicion = Integer.parseInt(teclado.nextLine());
         if (posicion > 3)
             cuentaActiva = null;
         else
-            cuentaActiva = cuenta [posicion];
+            cuentaActiva = cuenta[posicion];
     }
+
+    static void altaCuenta() {
+        float[] comisiones = Ejercicio3.selectComision();
+        System.out.println("\tIntroduce un número de cuenta: ");
+        cuentaActiva = new CuentaCorriente(teclado.nextLine());
+        CuentaCorriente.setComision(comisiones[0], comisiones[1]);
+        System.out.println(
+                "\tHas dado de alta una cuenta con una comision minima de " + CuentaCorriente.getMinimoCosmision());
+    }
+
+    static void cambiarCuenta () {
+        int posicion = 3;
+        System.out.println("Selecciona la posicion de la cuenta a la que quieres cambiar");
+        while (posicion > 3 || cuenta[posicion] == null){
+            posicion = Integer.parseInt(teclado.nextLine());
+        }
+        cuentaActiva = cuenta [posicion];
+    }
+
     static void menu() {
         teclado = new Scanner(System.in);
         boolean salir = false;
@@ -41,10 +57,19 @@ public class Ejercicio4 {
             switch (opcion) {
                 case 1:
                     System.out.println("\tDar cuenta de alta");
-                    Ejercicio3.altaCuenta();
+                    if (cuenta[2] != null) {
+                        System.out.println("No puedes introducir más cuentas");
+                    } else {
+                        int contador = 0;
+                        while (cuenta[contador] != null)
+                            contador++;
+                        altaCuenta();
+                        cuenta[contador] = cuentaActiva;
+                    }
                     break;
                 case 2:
                     System.out.println("\tIngresar");
+                    Ejercicio3.cuenta = cuentaActiva;
                     Ejercicio3.ingreso();
                     break;
                 case 3:
@@ -52,13 +77,14 @@ public class Ejercicio4 {
                     break;
                 case 4:
                     System.out.println("\tElegiste opción 4");
+                    Ejercicio3.cuenta = cuentaActiva;
                     Ejercicio3.retirada();
                     break;
                 case 5:
                     System.out.println("\tCambiar de cuenta");
                     setCuentaActiva();
-                break;
-                    case 0:
+                    break;
+                case 0:
                     salir = true;
                     break;
                 default:
@@ -74,11 +100,16 @@ public class Ejercicio4 {
         System.out.println("2 Ingresar");
         System.out.println("3 Consultar saldo");
         System.out.println("4 Retirar");
+        System.out.println("5 Cambiar de cuenta");
         System.out.println("0 Salir del programa");
         try { // si introduce un valor no entero haría return 999
             return Integer.parseInt(teclado.nextLine());
         } catch (Exception e) {
             return 999;
         }
+    }
+
+    public static void main(String[] args) {
+        menu();
     }
 }
