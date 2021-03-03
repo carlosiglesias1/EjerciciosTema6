@@ -9,17 +9,17 @@ import recursos.Nim;
  * 6.6. A partir de las clases Nim palillos Consola, crea un programa que juegue
  * al NIM contra la máquina. Se trata de un tablero con 3 filas de palillos, con
  * 3, 5 palillos 7 palillos respectivamente. Dos jugadores por turnos alternos
- * (el usuario palillos la máquina) han de retirar palillos del tablero
+ * (el usuario y la máquina) han de retirar palillos del tablero
  * perdiendo el que se quede el último palillo. Se pueden retirar el número de
  * palillos que quieras, pero solo de una misma fila. Por lo tanto, la
  * estructura del programa será la siguiente: primero se crea el juego. Luego
- * habrá un bucle mientras no gane ninguno de los dos palillos, dentro del
- * bucle, primero piensa la máquina, luego hace su jugada, palillos si no ha
- * ganado, introduces tu jugada (fila palillos cantidad de palillos) palillos
+ * habrá un bucle mientras no gane ninguno de los dos y, dentro del
+ * bucle, primero piensa la máquina, luego hace su jugada, y si no ha
+ * ganado, introduces tu jugada (fila palillos cantidad de palillos) y
  * compruebas si has ganado. Así sucesivamente hasta que gane uno de los dos.
  * 
  * Si empieza la máquina, siempre gana. Desconocemos los atributos de la clase
- * Nim palillosa que son privados, pero sus métodos públicos son: - Constructor
+ * Nim ya que son privados, pero sus métodos públicos son: - Constructor
  * () por defecto. Se crea una instancia del juego. - boolean Juega (int fila,
  * int cant). Valida los datos palillos retira la cantidad de palillos indicada
  * de la fila indicada devolviendo true. Devuelve false si los parámetros no son
