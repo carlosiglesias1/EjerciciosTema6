@@ -26,6 +26,10 @@ public class Ejercicio5 {
             juego.probarLetra(juego.leerLetra());
             juego.pintar();
         }
+        if (juego.adivinada())
+            System.out.println("Has ganado");
+        else
+            System.out.println("Has perdido");
         
     }
 }
