@@ -58,14 +58,16 @@ public class Ejercicio6 {
             } while (!nim.Juega(fila, palillos));
 
             Consola.pintarTablero(nim);
-        }
-        // Tú juegas
-        while (!nim.Fin()){
-            do {
-                fila = Consola.leerEntero("Introduce la fila:\n");
-                palillos = Consola.leerEntero("Introduce los palillos:\n");
-            } while (!nim.Juega(fila, palillos));
-            Consola.pintarTablero(nim);
+
+            // Tú juegas
+            if (!nim.Fin()) {
+                do {
+                    fila = Consola.leerEntero("Introduce la fila:\n");
+                    palillos = Consola.leerEntero("Introduce los palillos:\n");
+                } while (!nim.Juega(fila, palillos));
+                Consola.pintarTablero(nim);
+            }else
+                System.out.println("Has perdido");
         }
 
         teclado.close();
