@@ -1,24 +1,24 @@
 package recursos;
+
 import java.util.Scanner;
+
 public class Consola {  
       
 protected Consola (){
     //Empty constructor
 }
-
+static Scanner teclado = new Scanner(System.in);
 public static int leerEntero (String texto) {
     int valor=-1;  
     boolean error;
     do  {   
         error = false;
-        Scanner teclado = new Scanner(System.in);
         System.out.print(texto);
         String txt = teclado.nextLine();
         txt = txt.replaceAll("\\s","");
         try {
           valor = Integer.parseInt(txt);
         }  catch( Exception e ) {System.out.println("> Valor incorrecto."); error=true;}
-        teclado.close();
     }  while (error);
     return valor;
 }
@@ -35,5 +35,4 @@ public static void pintarTablero (Nim tablero){
     }
     System.out.println ("-------------------------\n" );
 }
-
-} //fin clase
+} // fin clase
