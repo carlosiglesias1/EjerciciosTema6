@@ -1,4 +1,6 @@
 package ejercicios;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 /**6.9. Ejercicios de fechas. Usando las clases de Java para el manejo de fechas, realiza
 programas con la siguiente funcionalidad:
@@ -17,5 +19,8 @@ h) Indica el día de la semana (en texto, en gallego) del 31 de diciembre de los
 años. */
 
 public class Ejercicio9 {
-    
+    public static void main(String[] args) {
+        System.out.println("Apartado a)");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    }
 }
