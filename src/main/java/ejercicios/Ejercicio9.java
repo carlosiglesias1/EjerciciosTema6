@@ -1,5 +1,6 @@
 package ejercicios;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import java.time.LocalDate;
 
 /**6.9. Ejercicios de fechas. Usando las clases de Java para el manejo de fechas, realiza
@@ -18,8 +19,11 @@ g) Introducir un año y decir cuántos domingos tiene.
 h) Indica el día de la semana (en texto, en gallego) del 31 de diciembre de los últimos 5
 años. */
 
+
+
 public class Ejercicio9 {
     public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
         int dias = 0;
         System.out.println("Apartado a)");
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -30,7 +34,7 @@ public class Ejercicio9 {
         System.out.println("Desde "+birthDate.format(df)+" han pasado "+dias+" días");
 
         System.out.println("Apartado b)");
-        
+
 
     }
 }
