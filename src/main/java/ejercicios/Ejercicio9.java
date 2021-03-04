@@ -1,6 +1,6 @@
 package ejercicios;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**6.9. Ejercicios de fechas. Usando las clases de Java para el manejo de fechas, realiza
 programas con la siguiente funcionalidad:
@@ -20,7 +20,17 @@ años. */
 
 public class Ejercicio9 {
     public static void main(String[] args) {
+        int dias = 0;
         System.out.println("Apartado a)");
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate date = LocalDate.now();
+        LocalDate birthDate = LocalDate.of(2000, 2, 9);
+        dias += date.getDayOfYear()-birthDate.getDayOfYear();
+        dias += (date.getYear()-birthDate.getYear())*365;
+        System.out.println("Desde "+birthDate.format(df)+" han pasado "+dias+" días");
+
+        System.out.println("Apartado b)");
+        
+
     }
 }
