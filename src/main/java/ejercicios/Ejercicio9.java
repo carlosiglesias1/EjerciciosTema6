@@ -19,8 +19,6 @@ g) Introducir un año y decir cuántos domingos tiene.
 h) Indica el día de la semana (en texto, en gallego) del 31 de diciembre de los últimos 5
 años. */
 
-
-
 public class Ejercicio9 {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
