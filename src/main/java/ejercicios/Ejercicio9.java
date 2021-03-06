@@ -1,6 +1,7 @@
 package ejercicios;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.time.LocalTime;
 import java.time.LocalDate;
 
 /**6.9. Ejercicios de fechas. Usando las clases de Java para el manejo de fechas, realiza
@@ -20,19 +21,72 @@ h) Indica el día de la semana (en texto, en gallego) del 31 de diciembre de los
 años. */
 
 public class Ejercicio9 {
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    static Scanner teclado = new Scanner(System.in);
+    static DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    static void promptFecha (){
+        System.out.println("Escribe una fecha aaaa-mm-dd");
+    }
+    
+    static void promptHora (){
+        System.out.println("Escribe una fecha hh:mm:ss");
+    }
+    
+    static void solucionA (){
         int dias = 0;
-        System.out.println("Apartado a)");
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date = LocalDate.now();
-        LocalDate birthDate = LocalDate.of(2000, 2, 9);
+        promptFecha();
+        LocalDate birthDate = LocalDate.parse(teclado.nextLine());
         dias += date.getDayOfYear()-birthDate.getDayOfYear();
         dias += (date.getYear()-birthDate.getYear())*365;
         System.out.println("Desde "+birthDate.format(df)+" han pasado "+dias+" días");
+    }
 
-        System.out.println("Apartado b)");
+    static void solucionB (){
+        promptFecha();
+        LocalDate date = LocalDate.parse(teclado.nextLine());
+        System.out.println("Introduce los días");
+        int dias = Integer.parseInt(teclado.nextLine());
+        System.out.println("La fecha "+ date.format(df) +" más "+ dias +" días da como resultado "+date.plusDays(dias).format(df));
 
+    }
+    static LocalTime horaMayor (LocalTime time, LocalTime time2){
+        if (time.getHour()>time2.getHour() || time.getHour()==time2.getHour() && time.getMinute() > time2.getMinute() || time.getMinute() == time2.getMinute() && time.getSecond()>time2.getSecond())
+            return time;
+        else
+            return time2;
+    }
+    static void solucionC () {
+        int segundos = 0;
+        promptHora();
+        LocalTime time = LocalTime.parse(teclado.nextLine());
+        promptHora();
+        LocalTime time2 = LocalTime.parse(teclado.nextLine());
+        if(horaMayor(time, time2)==time){
+            segundos += (time.getHour()-time2.getHour())*3600;
+            segundos += (time.getMinute()-time2.getMinute())*60;
+            segundos += (time.getSecond()-time2.getSecond());
+        }else{
+            segundos += (time2.getHour()-time.getHour())*3600;
+            segundos += (time2.getMinute()-time.getMinute())*60;
+            segundos += (time2.getSecond()-time.getSecond());
+        }
+        System.out.println(segundos);
+    }
 
+    void solucionD () {
+        
+    }
+
+    public static void main(String[] args) {
+        System.out.println("\nApartado a)");
+        //solucionA();
+
+        System.out.println("\nApartado b)");
+        //solucionB();
+
+        System.out.println("\nApartado c)");
+        solucionC();
+        teclado.close();
     }
 }
