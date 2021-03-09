@@ -104,6 +104,7 @@ public class Ejercicio9 {
         LocalDate fechaCompra = null;
         LocalTime horaCompra = null;
         String[] dataF = new String[3];
+
         System.out.println("Introduce un tipo de producto");
         System.out.println("1: " + tipo[0]);
         System.out.println("2: " + tipo[1]);
@@ -156,23 +157,29 @@ public class Ejercicio9 {
     }
 
     static void solucionG() {
+        final String inicioFecha = "-01-01";
         int cuentaDomingos = 0;
         int ano = 0;
         LocalDate fecha;
         System.out.println("Introduce un año");
         ano = Integer.parseInt(teclado.nextLine());
-        switch (Integer.toString(ano).length()){
-            case 1: fecha = LocalDate.parse("000"+ ano +"-01-01");
-                break;
-            case 2: fecha = LocalDate.parse("00"+ ano +"-01-01");
-                break;
-            case 3: fecha = LocalDate.parse("0"+ ano +"-01-01");
-                break;
-            case 4: fecha = LocalDate.parse(ano + "-01-01");
-                break;
-            default: System.out.println("Parámetros mal introducidos, se usará la fecha actual");
-                    fecha = LocalDate.now();
-                break;
+        switch (Integer.toString(ano).length()) {
+        case 1:
+            fecha = LocalDate.parse("000" + ano + inicioFecha);
+            break;
+        case 2:
+            fecha = LocalDate.parse("00" + ano + inicioFecha);
+            break;
+        case 3:
+            fecha = LocalDate.parse("0" + ano + inicioFecha);
+            break;
+        case 4:
+            fecha = LocalDate.parse(ano + inicioFecha);
+            break;
+        default:
+            System.out.println("Parámetros mal introducidos, se usará la fecha actual");
+            fecha = LocalDate.now();
+            break;
         }
         while (fecha.getDayOfWeek() != DayOfWeek.SUNDAY)
             fecha = fecha.plusDays(1);
@@ -192,7 +199,7 @@ public class Ejercicio9 {
         System.out.println("En este año hubo " + cuentaDomingos + " domingos");
     }
 
-    static void solucionH () {
+    static void solucionH() {
         LocalDate fecha = LocalDate.parse("2021-12-31");
         for (int i = 0; i < 5; i++) {
             fecha = fecha.minusYears(1);
