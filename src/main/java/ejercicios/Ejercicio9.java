@@ -74,8 +74,45 @@ public class Ejercicio9 {
         System.out.println(segundos);
     }
 
-    void solucionD () {
-        
+    static void solucionD () {
+        int contador = 0;
+        for (int i = 0; i < LocalDate.now().getYear(); i++) {
+            if (i % 4 == 0)
+                contador++;
+        }
+        System.out.println("Han pasado " + contador + " años bisiestos");
+    }
+
+    static void solucionE () {
+        String [] semana = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"}; 
+        promptFecha();
+        LocalDate fecha = LocalDate.parse(teclado.nextLine());
+        System.out.println("Hoy es " + semana[fecha.getDayOfWeek().getValue()]);
+    }
+
+    static void solucionF () {
+        String [] tipo = {"Perecedero", "Electrónica", "Ropa"};
+        int tipoProducto = 3;
+        String fechayHora = "";
+        LocalDate fechaCompra = null;
+        LocalTime horaCompra = null;
+        System.out.println("Introduce un tipo de producto");
+        System.out.println("1: "+tipo[0]);
+        System.out.println("2: "+tipo[1]);
+        System.out.println("3: "+tipo[2]);
+        tipoProducto = (Integer.parseInt(teclado.nextLine()))-1;
+        System.out.println("Introduce una fecha y hora de compra en formato aaaa-mm-dd//hh:mm:ss");
+        fechayHora = teclado.nextLine();
+        while(fechaCompra == null && horaCompra == null){
+            try{
+                fechaCompra = LocalDate.parse(fechayHora.substring(0,10));
+                horaCompra = LocalTime.parse(fechayHora.substring(12));
+            }catch(Exception e){
+                System.err.println("Has introducido mal los datos");
+            }
+        }
+        if(tipoProducto)
+        System.out.println(fechaCompra +" "+ horaCompra);
     }
 
     public static void main(String[] args) {
@@ -86,7 +123,17 @@ public class Ejercicio9 {
         //solucionB();
 
         System.out.println("\nApartado c)");
-        solucionC();
+        //solucionC();
+
+        System.out.println("\nApartado d)");
+        //solucionD();
+
+        System.out.println("\nApartado e)");
+        //solucionE();
+
+        System.out.println("\nApartado f)");
+        solucionF();
+
         teclado.close();
     }
 }
