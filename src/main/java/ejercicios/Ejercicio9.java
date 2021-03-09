@@ -29,7 +29,7 @@ public class Ejercicio9 {
     }
     
     static void promptHora (){
-        System.out.println("Escribe una fecha hh:mm:ss");
+        System.out.println("Escribe una hora hh:mm:ss");
     }
     
     static void solucionA (){
