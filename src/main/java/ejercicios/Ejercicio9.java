@@ -155,7 +155,11 @@ public class Ejercicio9 {
     }
 
     static void solucionG () {
-        
+        promptFecha();
+        LocalDate fecha = LocalDate.parse(teclado.nextLine());
+        for (int i = 0; i < fecha.; i++) {
+            
+        }
     }
 
     public static void main(String[] args) {
