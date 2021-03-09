@@ -3,6 +3,7 @@ package ejercicios;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.time.LocalTime;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 /**
@@ -12,11 +13,11 @@ import java.time.LocalDate;
  * Introducir una fecha y un número de días y calcule la fecha que se obtiene al
  * incrementar dichos días a la fecha. c) Introducir dos horas de reloj y nos dé
  * la diferencia entre ambas en segundos. d) ¿Cuántos años bisiestos ha habido
- * desde el año 1 dC? e) Introducir una fecha y mostrar el día de la semana que
+ * desde el ano 1 dC? e) Introducir una fecha y mostrar el día de la semana que
  * le corresponde. f) Introducir un tipo de producto (1- perecedero,
  * 2-electrónica, 3-ropa) y la fecha de compra, y que informe si se puede
  * devolver a día de hoy o no (los plazos de devolución, son respectivamente 5
- * horas, 6 meses, 15 días) g) Introducir un año y decir cuántos domingos tiene.
+ * horas, 6 meses, 15 días) g) Introducir un ano y decir cuántos domingos tiene.
  * h) Indica el día de la semana (en texto, en gallego) del 31 de diciembre de
  * los últimos 5 años.
  */
@@ -96,13 +97,13 @@ public class Ejercicio9 {
         System.out.println("Hoy es " + semana[fecha.getDayOfWeek().getValue()]);
     }
 
-    static String [] getDataF () {
+    static String[] getDataF() {
         String[] tipo = { "Perecedero", "Electrónica", "Ropa" };
         int tipoProducto = 3;
         String fechayHora = "";
         LocalDate fechaCompra = null;
         LocalTime horaCompra = null;
-        String [] dataF = new String [3];
+        String[] dataF = new String[3];
         System.out.println("Introduce un tipo de producto");
         System.out.println("1: " + tipo[0]);
         System.out.println("2: " + tipo[1]);
@@ -124,7 +125,7 @@ public class Ejercicio9 {
         return dataF;
     }
 
-    static void solucionF(String [] datos) {
+    static void solucionF(String[] datos) {
         final String NADANDENADA = "No puedes devolverlo";
         LocalDate fechaCompra = LocalDate.parse(datos[1]);
         LocalTime horaCompra = LocalTime.parse(datos[2]);
@@ -154,32 +155,75 @@ public class Ejercicio9 {
         System.out.println(fechaCompra + " " + horaCompra);
     }
 
-    static void solucionG () {
-        promptFecha();
-        LocalDate fecha = LocalDate.parse(teclado.nextLine());
-        for (int i = 0; i < fecha.; i++) {
-            
+    static void solucionG() {
+        int cuentaDomingos = 0;
+        int ano = 0;
+        LocalDate fecha;
+        System.out.println("Introduce un año");
+        ano = Integer.parseInt(teclado.nextLine());
+        switch (Integer.toString(ano).length()){
+            case 1: fecha = LocalDate.parse("000"+ ano +"-01-01");
+                break;
+            case 2: fecha = LocalDate.parse("00"+ ano +"-01-01");
+                break;
+            case 3: fecha = LocalDate.parse("0"+ ano +"-01-01");
+                break;
+            case 4: fecha = LocalDate.parse(ano + "-01-01");
+                break;
+            default: System.out.println("Parámetros mal introducidos, se usará la fecha actual");
+                    fecha = LocalDate.now();
+                break;
+        }
+        while (fecha.getDayOfWeek() != DayOfWeek.SUNDAY)
+            fecha = fecha.plusDays(1);
+        if (fecha.getYear() % 4 == 0) {
+            while (fecha.getDayOfYear() < 366) {
+                if (fecha.getDayOfWeek() == DayOfWeek.SUNDAY)
+                    cuentaDomingos++;
+                fecha = fecha.plusDays(1);
+            }
+        } else {
+            while (fecha.getDayOfYear() < 365) {
+                if (fecha.getDayOfWeek() == DayOfWeek.SUNDAY)
+                    cuentaDomingos++;
+                fecha = fecha.plusDays(1);
+            }
+        }
+        System.out.println("En este año hubo " + cuentaDomingos + " domingos");
+    }
+
+    static void solucionH () {
+        LocalDate fecha = LocalDate.parse("2021-12-31");
+        for (int i = 0; i < 5; i++) {
+            fecha = fecha.minusYears(1);
+            System.out.println(fecha.getDayOfWeek());
         }
     }
 
     public static void main(String[] args) {
         System.out.println("\nApartado a)");
-        // solucionA();
+        solucionA();
 
         System.out.println("\nApartado b)");
-        // solucionB();
+        solucionB();
 
         System.out.println("\nApartado c)");
-        // solucionC();
+        solucionC();
 
         System.out.println("\nApartado d)");
-        // solucionD();
+        solucionD();
 
         System.out.println("\nApartado e)");
-        // solucionE();
+        solucionE();
 
         System.out.println("\nApartado f)");
         solucionF(getDataF());
+
+        System.out.println("\nApartado g)");
+        solucionG();
+
+        System.out.println("\nApartado h)");
+        solucionH();
 
         teclado.close();
     }
