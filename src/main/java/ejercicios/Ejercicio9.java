@@ -74,8 +74,20 @@ public class Ejercicio9 {
         System.out.println(segundos);
     }
 
-    void solucionD () {
-        
+    static void solucionD () {
+        int contador = 0;
+        for (int i = 1; i < LocalDate.now().getYear(); i++) {
+            if(i % 4 == 0)
+                contador++;
+        }
+        System.out.println("Han pasado " + contador +" años bisiestos." );
+    }
+
+    static void solucionE (){
+        String dias [] = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+        promptFecha();
+        LocalDate fecha = LocalDate.parse(teclado.nextLine());
+        System.out.println("Estamos a " + dias[fecha.getDayOfWeek().getValue()-1]);
     }
 
     public static void main(String[] args) {
@@ -86,7 +98,16 @@ public class Ejercicio9 {
         //solucionB();
 
         System.out.println("\nApartado c)");
-        solucionC();
+        //solucionC();
+
+        System.out.println("\nApartado d)");
+        solucionD();
+
+        System.out.println("\nApartado e)");
+        solucionE();
+
+        System.out.println("\nApartado f)");
+
         teclado.close();
     }
 }
