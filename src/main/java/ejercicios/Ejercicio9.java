@@ -81,22 +81,6 @@ public class Ejercicio9 {
         System.out.println(segundos);
     }
 
-<<<<<<< HEAD
-    static void solucionD () {
-        int contador = 0;
-        for (int i = 1; i < LocalDate.now().getYear(); i++) {
-            if(i % 4 == 0)
-                contador++;
-        }
-        System.out.println("Han pasado " + contador +" años bisiestos." );
-    }
-
-    static void solucionE (){
-        String dias [] = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
-        promptFecha();
-        LocalDate fecha = LocalDate.parse(teclado.nextLine());
-        System.out.println("Estamos a " + dias[fecha.getDayOfWeek().getValue()-1]);
-=======
     static void solucionD() {
         int contador = 0;
         for (int i = 0; i < LocalDate.now().getYear(); i++) {
@@ -115,17 +99,18 @@ public class Ejercicio9 {
 
     static String[] getDataF() {
         String[] tipo = { "Perecedero", "Electrónica", "Ropa" };
-        int tipoProducto = 3;
+        int tipoProducto;
         String fechayHora = "";
         LocalDate fechaCompra = null;
         LocalTime horaCompra = null;
         String[] dataF = new String[3];
-
-        System.out.println("Introduce un tipo de producto");
-        System.out.println("1: " + tipo[0]);
-        System.out.println("2: " + tipo[1]);
-        System.out.println("3: " + tipo[2]);
-        tipoProducto = (Integer.parseInt(teclado.nextLine())) - 1;
+        do {
+            System.out.println("Introduce un tipo de producto");
+            System.out.println("1: " + tipo[0]);
+            System.out.println("2: " + tipo[1]);
+            System.out.println("3: " + tipo[2]);
+            tipoProducto = (Integer.parseInt(teclado.nextLine())) - 1;
+        } while (tipoProducto>2);
         System.out.println("Introduce una fecha y hora de compra en formato aaaa-mm-dd//hh:mm:ss");
         fechayHora = teclado.nextLine();
         while (fechaCompra == null && horaCompra == null) {
@@ -221,7 +206,6 @@ public class Ejercicio9 {
             fecha = fecha.minusYears(1);
             System.out.println(fecha.getDayOfWeek());
         }
->>>>>>> 886c064295144d7c78197f4cccb6c3d172c5b800
     }
 
     public static void main(String[] args) {
@@ -232,11 +216,7 @@ public class Ejercicio9 {
         solucionB();
 
         System.out.println("\nApartado c)");
-<<<<<<< HEAD
-        //solucionC();
-=======
         solucionC();
->>>>>>> 886c064295144d7c78197f4cccb6c3d172c5b800
 
         System.out.println("\nApartado d)");
         solucionD();
@@ -245,8 +225,6 @@ public class Ejercicio9 {
         solucionE();
 
         System.out.println("\nApartado f)");
-<<<<<<< HEAD
-=======
         solucionF(getDataF());
 
         System.out.println("\nApartado g)");
@@ -254,7 +232,6 @@ public class Ejercicio9 {
 
         System.out.println("\nApartado h)");
         solucionH();
->>>>>>> 886c064295144d7c78197f4cccb6c3d172c5b800
 
         teclado.close();
     }
