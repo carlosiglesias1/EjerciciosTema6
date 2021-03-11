@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 
 public class NuevaCuentaCorriente {
-    private String IBAN;
+    private String iban;
     private float saldo;
     private int contadorIngresos;
-    private static ArrayList <String []> movimientos = new ArrayList <String []>();
+    private static ArrayList<String[]> movimientos = new ArrayList<String[]>();
     private static float porcentajeComision;
     private static float minimoComision;
 
@@ -19,11 +19,15 @@ public class NuevaCuentaCorriente {
         return entidad + oficina + dc + numeroCuenta + codigoPais + "00";
     }
 
-    public NuevaCuentaCorriente(String codigoPais, String entidad, String oficina, String DigitoControl,
+    public NuevaCuentaCorriente(String codigoPais, String entidad, String oficina, String digitoControl,
             String numeroCuenta) {
-        IBAN = calcularIBAN(codigoPais, entidad, oficina, DigitoControl, numeroCuenta);
+        iban = calcularIBAN(codigoPais, entidad, oficina, digitoControl, numeroCuenta);
         saldo = 0.0f;
         contadorIngresos = 0;
+    }
+
+    public String getIBAN (){
+        return iban;
     }
 
     public static float getPorcentajeComision() {
@@ -38,18 +42,18 @@ public class NuevaCuentaCorriente {
         return saldo;
     }
 
-    static void registrarMovimiento (int tipo, float importe){
-        movimientos.add(new String[]{Integer.toString(tipo),Float.toString(importe)});
+    static void registrarMovimiento(int tipo, float importe) {
+        movimientos.add(new String[] { Integer.toString(tipo), Float.toString(importe) });
     }
 
-    static void imprimirMovimientos (){
-        String [] tipo = {"Ingreso", "Retirada"};
+    static void imprimirMovimientos() {
+        String[] tipo = { "Ingreso", "Retirada" };
         for (int i = 0; i < movimientos.size(); i++) {
-            if(movimientos.get(i)[0].equals("0"))
+            if (movimientos.get(i)[0].equals("0"))
                 System.out.println(tipo[0]);
             else
                 System.out.println();
-            System.out.println("\t"+movimientos.get(i)[1]+"\n");
+            System.out.println("\t" + movimientos.get(i)[1] + "\n");
         }
     }
 
