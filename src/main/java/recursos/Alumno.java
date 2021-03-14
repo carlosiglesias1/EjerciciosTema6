@@ -1,4 +1,4 @@
-package ejercicios;
+package recursos;
 
 import java.time.LocalDate;
 
