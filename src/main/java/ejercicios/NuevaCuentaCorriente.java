@@ -49,10 +49,7 @@ public class NuevaCuentaCorriente {
     static void imprimirMovimientos() {
         String[] tipo = { "Ingreso", "Retirada" };
         for (int i = 0; i < movimientos.size(); i++) {
-            if (movimientos.get(i)[0].equals("0"))
-                System.out.println(tipo[0]);
-            else
-                System.out.println();
+            System.out.println(tipo[Integer.parseInt(movimientos.get(i)[0])]);
             System.out.println("\t" + movimientos.get(i)[1] + "\n");
         }
     }
