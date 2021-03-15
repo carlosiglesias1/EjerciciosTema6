@@ -16,14 +16,14 @@ import java.util.Random;
 
 public class Ruleta {
     private int numeroGanador;
-    static Random posicion = new Random();
+    private Random posicion = new Random();
     
     public Ruleta () {
         //new ruleta
     }
 
     public void setRuleta (){
-        this.numeroGanador = posicion.nextInt(37);
+        this.numeroGanador = this.posicion.nextInt(37);
     }
 
     public int getNumeroGanador(){

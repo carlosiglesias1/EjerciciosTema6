@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PruebaBeneficios",
+            "request": "launch",
+            "mainClass": "recursos.ruleta.PruebaBeneficios",
+            "projectName": "EjerciciosTema6"
+        },
+        {
+            "type": "java",
             "name": "Launch Ejercicio14",
             "request": "launch",
             "mainClass": "ejercicios.Ejercicio14",

@@ -35,11 +35,12 @@ public class Jugador extends Ruleta {
         }
     }
 
-    public boolean jugar (){ 
-        if(apuestasEnNumeros[getNumeroGanador()]==0)
+    public boolean jugar (){
+        super.setRuleta(); 
+        if(apuestasEnNumeros[super.getNumeroGanador()]==0)
             return false;
         else{
-            this.dinero += apuestasEnNumeros[getNumeroGanador()]*2;
+            this.dinero += apuestasEnNumeros[super.getNumeroGanador()]*2;
             return true;
         }
     }

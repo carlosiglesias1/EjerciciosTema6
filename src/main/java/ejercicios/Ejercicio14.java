@@ -8,9 +8,7 @@ public class Ejercicio14 {
         final int MIN = 0;
         int count = 0;
         Jugador player = new Jugador(10000);
-        Ruleta ruleta = new Ruleta();
         for (int i = 0; i < 10000; i++) {
-            ruleta.setRuleta();
             player.apostarPar(1);
             if(player.jugar())
                 System.out.println("Has ganado");
