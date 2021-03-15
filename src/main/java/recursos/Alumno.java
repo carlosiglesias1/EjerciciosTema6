@@ -85,7 +85,7 @@ public class Alumno {
 
     public boolean esMayorEdad() {
         LocalDate now = LocalDate.now();
-        if (now.getDayOfYear() - this.fechaNacimiento.getYear() > 18
+        if (now.getYear() - this.fechaNacimiento.getYear() > 18
                 || now.getYear() - this.fechaNacimiento.getYear() == 18
                         && now.getMonth().getValue() > this.fechaNacimiento.getMonth().getValue()
                 || now.getMonth().getValue() == this.fechaNacimiento.getMonth().getValue()

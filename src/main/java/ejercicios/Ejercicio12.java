@@ -1,5 +1,10 @@
 package ejercicios;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+
+import recursos.Alumno;
+
 /**
  * 6.12. Diseña una clase llamada Alumno para gestionar los alumnos de una
  * escuela. Contiene los atributos: nombre completo, DNI, fecha de nacimiento y
@@ -14,5 +19,15 @@ package ejercicios;
  */
 
 public class Ejercicio12 {
-    
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Alumno chico;
+        System.out.println("Introduce los datos del alumno ('Nombre','Dni', 'aaaa-mm-dd', 'Colegio')");
+        chico = new Alumno(teclado.nextLine(), teclado.nextLine(), LocalDate.parse(teclado.nextLine()), teclado.nextLine());
+        if(chico.esMayorEdad())
+            System.out.println("El chaval tiene más de dieciocho años");
+        else
+            System.out.println("El chaval es menor de edad");
+        teclado.close();
+    }
 }
