@@ -25,9 +25,9 @@ public class Ejercicio12 {
         System.out.println("Introduce los datos del alumno ('Nombre','Dni', 'aaaa-mm-dd', 'Colegio')");
         chico = new Alumno(teclado.nextLine(), teclado.nextLine(), LocalDate.parse(teclado.nextLine()), teclado.nextLine());
         if(chico.esMayorEdad())
-            System.out.println("El chaval tiene más de dieciocho años");
+            System.out.println(chico.getNombre()+" tiene más de dieciocho años");
         else
-            System.out.println("El chaval es menor de edad");
+            System.out.println(chico.getNombre() + " es menor de edad");
         teclado.close();
     }
 }
