@@ -19,3 +19,6 @@ public class Ejercicio14 {
         System.out.println(player.getDinero()+ " en "+count+" intentos");
     }
 }
+
+
+//Pierde todas las veces que juega a la ruleta
