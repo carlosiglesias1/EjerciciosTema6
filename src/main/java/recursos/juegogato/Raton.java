@@ -6,18 +6,12 @@ public class Raton {
     private int[] posicion = new int[2];
     static Random direccion = new Random();
 
-    public Raton(int x, int y) {
-        posicion[0] = x;
-        posicion[1] = y;
+    public Raton (int indice){
+        posicion[0] = direccion.nextInt(indice);
+        posicion[1] = direccion.nextInt(indice);
     }
 
-    public Raton (){
-        //para que el gato sepa donde esta
-        posicion[0] = this.posicion[0];
-        posicion[1] =this.posicion[1];
-    }
-
-    protected int[] getPosicion() {
+    public int[] getPosicion() {
         return this.posicion;
     }
 
