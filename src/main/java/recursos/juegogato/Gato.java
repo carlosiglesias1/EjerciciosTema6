@@ -16,15 +16,29 @@ public class Gato {
     }
 
     public void mover (Raton raton){
-        if(Math.abs(raton.getPosicion()[0]-this.posicion[0])>Math.abs(raton.getPosicion()[1]-this.posicion[1])){
-            if(raton.getPosicion()[1]-this.posicion[1]>0)
+        int distanciaEjeX = raton.getPosicion()[0]-this.posicion[0];
+        int distanciaEjeY = raton.getPosicion()[1]-this.posicion[1];
+        if(Math.abs(distanciaEjeX) > Math.abs(distanciaEjeY)){
+            if(distanciaEjeY>0)
                 this.posicion[1]++;
+            else if (distanciaEjeY ==0){
+                if(distanciaEjeX>0)
+                    this.posicion[0]++;
+                else
+                    this.posicion[0]--;
+            }
             else
                 this.posicion[1]--;
         }
         else{
-            if(raton.getPosicion()[0]-this.posicion[0]>0)
+            if(distanciaEjeX>0)
                 this.posicion[0]++;
+            else if (distanciaEjeX == 0){
+                if (distanciaEjeY > 0)
+                    this.posicion[1]++;
+                else
+                    this.posicion[1]--;
+            }
             else
                 this.posicion[0]--;
         }
